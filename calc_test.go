@@ -2,11 +2,24 @@ package main
 
 import (
   "testing"
-  "github.com/stretchr/testify/assert"
 )
 
-func TestCalc(t *testing.T) {
+func TestCalcCorrect(t *testing.T) {
   // assert equality
-  assert.Equal(t, add(2, 3), 5, "they should be equal")
-  assert.NotEqual(t, add(2, 3), 6, "they should not be equal")
+  actual := add(2, 3)
+  expected := 5
+
+  if (actual != expected) {
+    t.Error("Expected ", expected," got ", actual)
+  }
+}
+
+func TestCalcInCorrect(t *testing.T) {
+  // assert equality
+  actual := add(2, 3)
+  expected := 6
+
+  if (actual == expected) {
+    t.Error("Expected ", expected," got ", actual)
+  }
 }
